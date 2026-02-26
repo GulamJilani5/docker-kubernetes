@@ -161,11 +161,17 @@ Application logic
 - **Step 2:** kube-proxy Takes Over
   - kube-proxy sees traffic to `10.96.20.15:80`
   - It checks Service endpoints and Endpoints list looks like:
+  - Pod IP + Port
+
   ```text
    10.1.1.2:8080
    10.1.1.5:8080
    10.1.1.9:8080
   ```
+
+  - So all three pods are listening on same port 8080 but different IP
+  - And containers inside each pods will have same IP as Pod's IP but different port to each among them(containers)
+
 - **Step 3:**Load Balancing
   - kube-proxy chooses one, example `10.1.1.5:8080`
 - **Step 4:** Pod Receives Request
