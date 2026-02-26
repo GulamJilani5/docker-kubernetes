@@ -11,27 +11,29 @@
 
 #### Deployment.yaml
 
-    apiVersion: apps/v1        # API version used
-    kind: Deployment           # Type of resource
-    metadata:                  # Metadata about the deployment
-       name: my-app-deployment  # Name of the deployment
-       labels:
-          app: my-app            # Label to identify the deployment
-    spec:                      # Specification of the deployment
-       replicas: 3              # ReplicaSet
-       selector:                # How to identify pods managed by this deployment
-         matchLabels:
-           app: my-app
-       template:                # Pod template
-         metadata:
-           labels:
-              app: my-app        # Label for pods
-         spec:                  # Specification for the pod
-           containers:
-              - name: my-app-container
-                image: nginx:latest         # Container image to run
-                ports:
-                 - containerPort: 80       # Port exposed by the container
+```yml
+apiVersion: apps/v1 # API version used
+kind: Deployment # Type of resource
+metadata: # Metadata about the deployment
+  name: my-app-deployment # Name of the deployment
+  labels:
+    app: my-app # Label to identify the deployment
+spec: # Specification of the deployment
+  replicas: 3 # ReplicaSet
+  selector: # How to identify pods managed by this deployment
+    matchLabels:
+      app: my-app
+  template: # Pod template
+    metadata:
+      labels:
+        app: my-app # Label for pods
+    spec: # Specification for the pod
+      containers:
+        - name: my-app-container
+          image: nginx:latest # Container image to run
+          ports:
+            - containerPort: 80 # Port exposed by the container
+```
 
 ## ➡️ Meaning Of Each Line Of Instruction:
 

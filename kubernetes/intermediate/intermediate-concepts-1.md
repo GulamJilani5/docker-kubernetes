@@ -77,3 +77,99 @@ Request 3 → pod-3
 ```
 
 - We did NOTHING, Service does that automatically.
+
+### ➡️ Service Example
+
+```yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+spec:
+  type: ClusterIP
+  selector:
+    app: order-app
+  ports:
+    - port: 80
+      targetPort: 8080
+```
+
+##### 🟦 type: ClusterIP
+
+- Default type.
+- Means:
+  - Accessible inside cluster only
+  - Gets stable internal IP
+  - Used for microservice-to-microservice communication
+
+##### 🟦 selector
+
+```yml
+selector:
+  app: order-app
+```
+
+- Service looks for Pods having:
+  - `app=order-app`
+- So Service connects automatically to:
+
+```yml
+order-pod-1
+order-pod-2
+order-pod-3
+```
+
+- If new Pod is created → automatically added.
+
+##### 🟦 ports
+
+```yml
+ports:
+  - port: 80
+    targetPort: 8080
+```
+
+- This means:
+  - Service listens on port 80
+  - Forwards traffic to Pod port 8080
+- Flow becomes:
+
+```yml
+order-service:80 → PodIP:8080
+```
+
+#### 🟦 Visual Flow
+
+```java
+Client (payment-service)
+        ↓
+order-service (ClusterIP)
+        ↓
+kube-proxy load balancing
+        ↓
+One of the 3 Pods
+        ↓
+Container (Spring Boot)
+        ↓
+Application logic
+```
+
+- Suppose, Payment service calls:
+  - `http://order-service/api/orders`
+- **Step 1:** DNS Resolution
+  - Kubernetes DNS converts `order-service` into IP Address(Service IP) `10.96.20.15`
+- **Step 2:** kube-proxy Takes Over
+  - kube-proxy sees traffic to `10.96.20.15:80`
+  - It checks Service endpoints and Endpoints list looks like:
+  ```text
+   10.1.1.2:8080
+   10.1.1.5:8080
+   10.1.1.9:8080
+  ```
+- **Step 3:**Load Balancing
+  - kube-proxy chooses one, example `10.1.1.5:8080`
+- **Step 4:** Pod Receives Request
+  - Traffic goes to `Pod IP:8080`
+  - Inside Pod:
+    - Container listening on 8080
+    - Now Spring Boot is running and handles request
