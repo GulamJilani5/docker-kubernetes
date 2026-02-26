@@ -159,8 +159,12 @@ Application logic
 - **Step 1:** DNS Resolution
   - Kubernetes DNS converts `order-service` into IP Address(Service IP) `10.96.20.15`
 - **Step 2:** kube-proxy Takes Over
+  - **kube-proxy does**
+    - Watches the Service + Endpoints
+    - Reads Pod IPs from Endpoints
+    - Routes traffic accordingly
   - kube-proxy sees traffic to `10.96.20.15:80`
-  - It checks Service endpoints and Endpoints list looks like:
+  - It checks Service endpoints and endpoints list looks like:
   - Pod IP + Port
 
   ```text
