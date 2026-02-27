@@ -94,6 +94,9 @@ spec:
       targetPort: 8080
 ```
 
+- label for the Pod is defined in the Deployment's `.spec.template` 🔴
+- This lable is used in the Deployment's `.spec.selector` and Serive's `.spec.selector` 🔴
+
 ##### 🟦 type: ClusterIP
 
 - Default type.
