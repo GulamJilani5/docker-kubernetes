@@ -176,13 +176,29 @@ Application logic
    10.1.1.9:8080
   ```
 
-  - So all three pods are listening on same port 8080 but different IP
-  - And containers inside each pods will have same IP as Pod's IP but different port to each among them(containers)
+  - So all three Pods are listening on different IPs (i.e., each Pod has its own unique Pod IP)
+  - And they are listening on the same port 8080, which is the container port
+  - This 8080 belongs to the container running inside the Pod
+  - It is NOT a Pod port
+  - All containers inside a Pod share the same Pod IP
+  - Containers can listen on:
+    - Same port (if only one container in the Pod)
+      `PodIP:8080`
+    - OR different ports (if multiple containers in Pod)
+      ```yml
+       Pod IP: 10.1.1.5
+       Container A → 8080
+       Container B → 9090
+       Container C → 3000
+      ```
 
 - **Step 3:**Load Balancing
   - kube-proxy chooses one, example `10.1.1.5:8080`
 - **Step 4:** Pod Receives Request
-  - Traffic goes to `Pod IP:8080`
+  - Traffic goes to **Pod IP**:`10.1.1.5`
   - Inside Pod:
-    - Container listening on 8080
+    - Container listening on `8080`
+      - Remember this `8080` is Container's Port not the Pod's Port if only one container in the Pod
+      - If more then one container then one container is having port `8080` and other container will have  
+        different ports.(Container A -> `10.1.1.5:8080`, Container B -> `10.1.1.5:9090`, Container C -> `10.1.1.5:3000`)
     - Now Spring Boot is running and handles request
