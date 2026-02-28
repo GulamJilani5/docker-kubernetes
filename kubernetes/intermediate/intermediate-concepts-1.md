@@ -170,11 +170,11 @@ Application logic
   - It checks Service endpoints and endpoints list looks like:
   - Pod IP + Port
 
-  ```text
-   10.1.1.2:8080
-   10.1.1.5:8080
-   10.1.1.9:8080
-  ```
+    ```yml
+    10.1.1.2:8080
+    10.1.1.5:8080
+    10.1.1.9:8080
+    ```
 
   - So all three Pods are listening on different IPs (i.e., each Pod has its own unique Pod IP)
   - And they are listening on the same port 8080, which is the container port
