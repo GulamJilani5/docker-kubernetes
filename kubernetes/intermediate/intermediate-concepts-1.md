@@ -133,8 +133,9 @@ ports:
 ```
 
 - This means:
-  - Service listens on port 80
-  - Forwards traffic to Pod port 8080
+  - port: Expose to outside world.
+    - It should be the same as `ports. containerPort` in Deployment. 🟠
+  - targetPort: Container starts internally inside the k8s cluster.
 - Flow becomes:
 
 ```yml
