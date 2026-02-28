@@ -132,10 +132,14 @@ ports:
     targetPort: 8080
 ```
 
-- This means:
-  - port: Expose to outside world.
-    - It should be the same as `ports. containerPort` in Deployment. 🟠
-  - targetPort: Container starts internally inside the k8s cluster.
+- port:
+  - Service port
+  - Other pods inside the cluster call this port
+  - This is the port exposed by the Service object
+- targetPort:
+  - container port
+  - The Service forwards traffic to this port inside the Pod
+  - This must match the **Deployment’s** `ports.containerPort` in Deployment🟠
 - Flow becomes:
 
 ```yml

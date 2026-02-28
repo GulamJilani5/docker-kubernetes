@@ -74,11 +74,22 @@ template: # Pod template
       app: my-app
 ```
 
+### 🟦 Ports
+
+- This container(App) is listening on port 80
+- It does NOT expose the container outside. The container is reachable through the Service only.
+  - `External(Browser / ReactJS) → LoadBalancer/Ingress → Service → Pod (containerPort)`
+- This must match the **Service’s** `ports.targetPort` in Service🟠
+
+```yml
+ports:
+  - containerPort: 80
+```
+
 | Field        | Description                        |
 | ------------ | ---------------------------------- |
 | `containers` | List of containers inside each pod |
 | `image`      | Docker image used in the container |
-| `ports`      | Exposed container port             |
 
 ## ➡️ Commands
 
