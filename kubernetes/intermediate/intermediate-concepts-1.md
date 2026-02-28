@@ -192,7 +192,7 @@ Application logic
        Container C → 3000
       ```
 
-- **Step 3:**Load Balancing
+- **Step 3:** Load Balancing
   - kube-proxy chooses one, example `10.1.1.5:8080`
 - **Step 4:** Pod Receives Request
   - Traffic goes to **Pod IP**:`10.1.1.5`
