@@ -96,6 +96,8 @@ Request 3 → pod-3
 
 ### ➡️ Service Example
 
+- It is called maneifest file
+
 ```yml
 apiVersion: v1
 kind: Service

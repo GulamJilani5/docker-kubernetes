@@ -11,6 +11,8 @@
 
 #### Deployment.yaml
 
+- It is called maneifest file
+
 ```yml
 apiVersion: apps/v1 # API version used
 kind: Deployment # Type of resource
