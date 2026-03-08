@@ -1,7 +1,7 @@
 ⏺️ ➡️ 🟦 🔵🔹🔷 🔵 ☑️ ✔️ 🔴 ⭕ • ‣ → ⁕
 
-# ⏺️ ConfigMap & Secret
+# ⏺️ Secret
 
-## ➡️ ConfigMap
+## ➡️
 
-## ➡️ Secret
+## ➡️
