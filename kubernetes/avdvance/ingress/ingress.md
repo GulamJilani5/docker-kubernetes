@@ -109,16 +109,17 @@ Node3
 - **Ingress** handles **cluster entry**, while **Spring Cloud Gateway** handles **API-level** routing and policies.
 
 ```text
-
 Client
    ↓
 Cloud Load Balancer
    ↓
-Ingress Controller (Kubernetes edge)
+Ingress Controller
    ↓
-Spring Cloud Gateway (API Gateway inside cluster)
+Spring Cloud Gateway
    ↓
-Microservices
+Kubernetes Service (user-service, order-service, etc.)
+   ↓
+Pods (instances of the microservice)
 ```
 
 ### 🟦 Ingress Controller
