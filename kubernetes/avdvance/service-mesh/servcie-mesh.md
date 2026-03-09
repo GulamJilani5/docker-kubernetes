@@ -2,8 +2,8 @@
 
 # ⏺️ Service Mesh
 
-- **Service-to-service traffic(East-West traffic)** refers to the communication between services inside a Kubernetes cluster.
-- Service Mesh manages communication between internal microservices inside the k8s cluster.
+- **Service-to-service traffic(East-West traffic)** refers to the communication between microservices running in pods inside a Kubernetes cluster.
+- Service Mesh manages communication between internal microservices(Pods) inside the k8s cluster.
 - **Service Mesh Tools**
   - istio, Linkerd, AWS App Mesh, Azure Service Mesh.
 - Service mesh
