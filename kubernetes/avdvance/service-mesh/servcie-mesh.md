@@ -11,6 +11,7 @@
 ## ➡️ Sidecar Proxy
 
 - In a Service Mesh, a sidecar proxy is deployed inside each pod alongside the main application container.
+- These Sidecar proxies handle traffic to and from the microservices running in pods, intercepting requests and responses.
 - Service Mesh secures internal service-to-service communication using Mutual TLS (mTLS).
 
 ## ➡️ Features of Service Mesh(Managed By Sidecar Proxy)
@@ -36,3 +37,13 @@
 - Provides observability into the system.
 
 #### 🟦 Security
+
+## ➡️ Components of a Service Mesh
+
+#### 🟦 Data Plane
+
+- The Data Plane is responsible for routing and managing traffic between microservices running inside pods. It is implemented using sidecar proxies
+
+#### 🟦 Control Plane
+
+The control plane is responsible for configuring, managing, and monitoring the proxies. It includes components like a control plane API, service discovery, and configuration management.
